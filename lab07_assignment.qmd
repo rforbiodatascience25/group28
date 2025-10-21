@@ -63,14 +63,15 @@ pca_fit
 Plotting the data in PC coordinates
 
 ```{r}
-pca_fit |> 
-  augment(biopsy) |>  # add original dataset back in
+
+pca_fit %>%
+  augment(biopsy) %>% # add original dataset back in
   ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
-  geom_point(size = 1.5) +
+  geom_point(size = 1) +
   scale_color_manual(
     values = c(malignant = "red", benign = "green")
   ) +
-  theme_half_open(12) + background_grid()
+  theme_classic() + background_grid()
   
 ```
 
@@ -113,7 +114,7 @@ pca_fit %>%
 
 ```{r}
 pca_fit %>%
-  tidy(matrix = "eigenvalues") %>%
+  tidy(matrix = "eigenvalues") |> 
   ggplot(aes(PC, percent)) +
   geom_col(fill = "orange", alpha = 0.8) +
   scale_x_continuous(breaks = 1:9) +
