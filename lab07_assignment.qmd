@@ -63,13 +63,14 @@ pca_fit
 Plotting the data in PC coordinates
 
 ```{r}
-pca_fit |>
-  augment(biopsy) |>
-  ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) +
-  geom_point(size = 1) +
-  scale_color_manual(values = c(Malignant = "red", Benign = "green")) +
-  labs(title = "Data in PC coordinates") +
-  theme_classic() + background_grid()
+pca_fit |> 
+  augment(biopsy) |>  # add original dataset back in
+  ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
+  geom_point(size = 1.5) +
+  scale_color_manual(
+    values = c(malignant = "red", benign = "green")
+  ) +
+  theme_half_open(12) + background_grid()
   
 ```
 
@@ -77,7 +78,7 @@ pca_fit |>
 
 ```{r}
 # extract rotation matrix
-pca_fit %>%
+pca_fit |> 
   tidy(matrix = "rotation")
 ```
 
@@ -89,8 +90,8 @@ arrow_style <- arrow(
 
 # plot rotation matrix
 pca_fit %>%
-  tidy(matrix = "rotation") %>%
-  pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") %>%
+  tidy(matrix = "rotation") |> 
+  pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") |> 
   ggplot(aes(PC1, PC2)) +
   geom_segment(xend = 0, yend = 0, arrow = arrow_style) +
   geom_text(
