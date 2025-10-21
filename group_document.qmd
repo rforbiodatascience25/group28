@@ -45,6 +45,15 @@ y <- 2
 x + y
 ```
 
+## New feature
+
+Adding some new text
+
+```{r}
+my_text <- "Hello"
+my_text
+```
+
 # Lena
 
 # Frederik
