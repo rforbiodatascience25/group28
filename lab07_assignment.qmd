@@ -2,7 +2,7 @@
 title: "lab07_assignment"
 format: 
   html:
-  embed-resources: true
+    embed-resources: true
 editor: visual
 ---
 
@@ -35,13 +35,32 @@ str(biopsy)
 Select numeric values, scale data and perform PCA
 
 ```{r}
-pca_fit <- biopsy %>% 
-  select(where(is.numeric)) %>% 
-  scale() %>% 
+pca_fit <- biopsy |>
+  select(where(is.numeric)) |>
+  scale() |>
   prcomp() 
 ```
 
 ## Look at the data in PC coordinates
+
+Looking at the fitted dataset firstly
+
+```{r}
+pca_fit
+```
+
+Plotting the data in PC coordinates
+
+```{r}
+pca_fit |>
+  augment(biopsy) |>
+  ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) +
+  geom_point(size = 1) +
+  scale_color_manual(values = c(Malignant = "red", Benign = "green")) +
+  labs(title = "Data in PC coordinates") +
+  theme_classic() + background_grid()
+  
+```
 
 ## Look at the rotation matrix
 
