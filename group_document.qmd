@@ -24,6 +24,16 @@ d = 3
 c/d
 ```
 
+## New analysis
+
+more text
+
+```{r}
+f = 34
+g = 3
+f*g
+```
+
 # Caroline
 
 Testing 123
@@ -33,6 +43,15 @@ x <- 1
 y <- 2
 
 x + y
+```
+
+## New feature
+
+Adding some new text
+
+```{r}
+my_text <- "Hello"
+my_text
 ```
 
 # Lena
