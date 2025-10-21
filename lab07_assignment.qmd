@@ -64,8 +64,8 @@ Plotting the data in PC coordinates
 
 ```{r}
 
-pca_fit %>%
-  augment(biopsy) %>% # add original dataset back in
+pca_fit |>
+  augment(biopsy) |> # add original dataset back in
   ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
   geom_point(size = 1) +
   scale_color_manual(
