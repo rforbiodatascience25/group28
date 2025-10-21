@@ -1,6 +1,8 @@
 ---
 title: "lab07_assignment"
-format: html
+format: 
+  html:
+  embed-resources: true
 editor: visual
 ---
 
@@ -10,12 +12,33 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(broom)
 ```
 
 ## Load Data
 
 ```{r}
+#| message: false
 biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
+```
+
+## Investigate data
+
+The data is a breast cancer
+
+```{r}
+str(biopsy)
+```
+
+## Data Wrangling
+
+Select numeric values, scale data and perform PCA
+
+```{r}
+pca_fit <- biopsy %>% 
+  select(where(is.numeric)) %>% 
+  scale() %>% 
+  prcomp() 
 ```
 
 ## Look at the data in PC coordinates
