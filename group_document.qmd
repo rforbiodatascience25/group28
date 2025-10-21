@@ -1,0 +1,15 @@
+---
+title: "Group Document"
+format: html
+editor: visual
+---
+
+# Emma
+
+# Bolette
+
+# Caroline
+
+# Lena
+
+# Frederik
