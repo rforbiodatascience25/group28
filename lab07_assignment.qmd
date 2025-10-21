@@ -1,0 +1,25 @@
+---
+title: "lab07_assignment"
+format: html
+editor: visual
+---
+
+# Group Assignment Lab 7
+
+## Libraries
+
+```{r}
+library(tidyverse)
+```
+
+## Load Data
+
+```{r}
+biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
+```
+
+## Look at the data in PC coordinates
+
+## Look at the rotation matrix
+
+## Look at the variance explained by each PC
