@@ -8,6 +8,22 @@ editor: visual
 
 # Bolette
 
+Some text is added
+
+```{r}
+a = 2
+b = 4
+a+b
+```
+
+Another code chunk
+
+```{r}
+c = 15
+d = 3
+c/d
+```
+
 # Caroline
 
 # Lena
