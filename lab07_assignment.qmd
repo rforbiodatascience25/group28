@@ -59,8 +59,11 @@ Looking at the fitted dataset firstly
 ```{r}
 pca_fit
 ```
+As can be seen the dataset has been flattened in accordance with a typical PCA analysis.
 
-Plotting the data in PC coordinates
+This allows us to view the data as a set of PC coordinates and see what connections can be gleamed from doing so, which can be a significantly simpler way of getting a handle on a complex dataset.
+
+###Plotting the data in PC coordinates
 
 ```{r}
 
@@ -74,6 +77,7 @@ pca_fit |>
   theme_classic() + background_grid()
   
 ```
+As can be seen on the graph above, we have selected the first two principal components and plotted them accordingly. The resulting graph shows a clear correlation between the two components, especially for the benign tumors. The higher the value of PC1 the less likely the tumor is to be malignant and to solidify this prediction one can take the second PC into account as the benign tumors mostly cluster around the value of 0.0.
 
 ## Look at the rotation matrix
 
@@ -82,7 +86,7 @@ pca_fit |>
 pca_fit |> 
   tidy(matrix = "rotation")
 ```
-
+Here we created the rotation matrix and we wish to see how these vectors look when plotted on the same two components as before.
 ```{r}
 # define arrow style for plotting
 arrow_style <- arrow(
@@ -104,14 +108,15 @@ pca_fit %>%
   coord_fixed() + # fix aspect ratio to 1:1
   theme_minimal_grid(12)
 ```
+Based on the vectors shown here we now know that Mitoses is the key factor for PC2 and thus that PC2 is most likely a measure of something in relation to cell replication. Meanwhile we don't really see any strong connections for PC1 in the present vectors, as all of them are pointing into the negatives.
 
-## Look at the variance explained by each P
+## Look at the variance explained by each PC
 
 ```{r}
 pca_fit %>%
   tidy(matrix = "eigenvalues")
 ```
-
+Once again using the tidy function, this time setting the matrix to eigenvalues.
 ```{r}
 pca_fit %>%
   tidy(matrix = "eigenvalues") |> 
@@ -125,4 +130,4 @@ pca_fit %>%
   theme_minimal_hgrid(12)
 ```
 
-By only using the first PC 65% of the variance is explained. It also becomes clear that adding additional components does not cover a significant amount of variance, and thus it could be argued that running the PCA with the single PC whilest not optimal is still doable.
+By only using the first PC 65% of the variance is explained. It also becomes clear that adding additional components does not cover a significant amount of variance, and thus it could be argued that running the PCA with the single PC, whilst not optimal, is still doable.
